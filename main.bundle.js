@@ -314,14 +314,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 $('.text-submission').on('click', 'button', function (event) {
   event.preventDefault();
   var inputText = $("textarea").val();
-  var splitInput = inputText.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(" ");
+  var splitInput = inputText.replace(/[\W_]+/g, " ").split(" ");
+  debugger;
   (0, _domManipulation.addSwatch)(splitInput);
 });
 
 $('textarea').on('keyup', function (event) {
   if (event.which === 13) {
     var inputText = $("textarea").val();
-    var splitInput = inputText.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()][\n\r]/g, "").split(" ");
+    var splitInput = inputText.replace(/[\W_]+/g, " ").split(" ");
     (0, _domManipulation.addSwatch)(splitInput);
     return false;
   }
